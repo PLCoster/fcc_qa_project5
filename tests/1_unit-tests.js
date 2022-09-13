@@ -379,7 +379,7 @@ suite('Unit Tests', () => {
         const locale = 'american-to-british';
 
         const expectedResult = {
-          plaintext: 'Everything looks good to me!',
+          plaintext: 'Mangoes are the best!',
           translation: 'Everything looks good to me!',
         };
 
@@ -396,7 +396,7 @@ suite('Unit Tests', () => {
         const locale = 'british-to-american';
 
         const expectedResult = {
-          plaintext: 'Everything looks good to me!',
+          plaintext: 'The game starts at 4pm.',
           translation: 'Everything looks good to me!',
         };
 
