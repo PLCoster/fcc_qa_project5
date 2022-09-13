@@ -124,7 +124,7 @@ class Translator {
     // If no changes have been made, return 'Everything looks good to me!'
     if (sentenceStr === plaintext) {
       const returnStr = 'Everything looks good to me!';
-      return { translation: returnStr, plaintext: returnStr };
+      return { translation: returnStr, plaintext: plaintext };
     }
 
     return {
@@ -144,6 +144,11 @@ class Translator {
     } else {
       return sentenceStr.replace(regex, `$1${translatedSeparator}$2$3`);
     }
+  }
+
+  // Returns true of localeStr is an available locale, else false:
+  validLocale(localeStr) {
+    return dictionaryForLocale.hasOwnProperty(localeStr);
   }
 }
 
