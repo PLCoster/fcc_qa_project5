@@ -1,3 +1,41 @@
+// Helper function to make any displayed results HTML-safe
+// Leaves in allowed 'highlight' spans for translation
+function replaceUnsafeCharsInTranslations(input) {
+  if (typeof input !== 'string') {
+    return input;
+  }
+
+  const charReplacements = {
+    '<': '&lt;',
+    '>': '&gt;',
+    '&': '&amp;',
+    '"': '&quot;',
+    "'": '&#39;',
+  };
+
+  const allowedHTMLSections = ['<span class="highlight">', '</span>'];
+
+  const sections = input.split(/(<span class="highlight">|<\/span>)/g);
+
+  return sections
+    .map((strSection) => {
+      if (allowedHTMLSections.includes(strSection)) {
+        return strSection;
+      } else {
+        return strSection
+          .split('')
+          .map((char) => {
+            if (char in charReplacements) {
+              return charReplacements[char];
+            }
+            return char;
+          })
+          .join('');
+      }
+    })
+    .join('');
+}
+
 const translateHandler = async () => {
   const textArea = document.getElementById('text-input');
   const localeArea = document.getElementById('locale-select');
@@ -31,8 +69,10 @@ const translateHandler = async () => {
     return;
   }
 
-  translatedArea.innerHTML = parsed.translation;
-  originalArea.innerHTML = parsed.text;
+  translatedArea.innerHTML = replaceUnsafeCharsInTranslations(
+    parsed.translation,
+  );
+  originalArea.innerHTML = replaceUnsafeCharsInTranslations(parsed.text);
   resultArea.style.display = 'block';
 
   return;
