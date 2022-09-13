@@ -1,45 +1,328 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>American/British English Translator</title>
 
-<head>
-	<title>American/British English Translator</title>
-	<meta name="description" content="An example for the fCC QA American/British English Translator project" />
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link id="favicon" rel="icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon">
-	<link rel="stylesheet" href="../public/style.css" type="text/css" />
-</head>
+    <meta
+      name="description"
+      content="An example for the Free Code Camp American/British English Translator Project"
+    />
 
-<body>
-	<header>
-		<h1>
-			American / British English Translator
-		</h1>
-	</header>
-	<hr style="margin: 25px" />
-	<div class="container">
-		<div class="form-container">
-			<textarea
-          rows="10"
-          cols="60"
-          id="text-input"
-        ></textarea>
-        <br />
-        <select id="locale-select">
-          <option value="american-to-british">American to British</option>
-          <option value="british-to-american">British to American</option>
-        </select>
-        <input type="button" value="Translate" id="translate-btn"/>
-      </div>
-      <div id="output-container">
-        <div id="solution-container">
-          Translated Sentence:
-          <div id="translated-sentence"></div>
-          <div id="error-msg"></div>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- FAVICONS -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/public/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/public/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/public/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/public/site.webmanifest" />
+
+    <!-- STYLES -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/public/style.css" type="text/css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=".">American-British Translator</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="https://plcoster.github.io/homepage/"
+              >
+                Home
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                FreeCodeCamp QA Projects
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://fcc-qa-project1.plcoster.repl.co"
+                  >
+                    Metric - Imperial Converter
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://fcc-qa-project2.plcoster.repl.co"
+                  >
+                    Issue Tracker
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://fcc-qa-project3.plcoster.repl.co"
+                  >
+                    Personal Library
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://fcc-qa-project4.plcoster.repl.co"
+                  >
+                    Sudoku Solver
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://fcc-qa-project5.plcoster.repl.co"
+                  >
+                    American British Translator
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://plcoster.github.io/homepage/projects.html"
+              >
+                All Projects
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/PLCoster">
+                <i class="fab fa-github"></i> Github
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://linkedin.com/in/plcoster">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
+
+    <div class="container">
+      <main>
+        <h1>
+          <img
+            class="logo"
+            src="/public/logo.png"
+            alt="White icons of U.K. and U.S. flags with arrows indicating swapping from one to the other and back"
+          />American-British English Translator
+        </h1>
+
+        <hr />
+
+        <div class="d-flex flex-row justify-content-center flex-wrap">
+          <!-- Sentence Input -->
+          <form class="form-container">
+            <h4>Translate Text:</h4>
+            <p><code>POST /api/translate</code></p>
+            <textarea
+              id="text-input"
+              class="form-control"
+              placeholder="Enter text to translate here"
+              name="text"
+              required
+            ></textarea>
+            <select id="locale-select" class="form-select" name="locale">
+              <option value="american-to-british" selected>
+                American to British
+              </option>
+              <option value="british-to-american">British to American</option>
+            </select>
+            <input
+              type="button"
+              class="btn btn-success"
+              value="Translate"
+              id="translate-btn"
+            />
+          </form>
+
+          <!-- Translation Result-->
+          <div id="output-container">
+            <div id="solution-container">
+              <div id="translation-result">
+                <h4><strong>Translated Text:</strong></h4>
+                <h6 id="translated-sentence">Try translating something!</h6>
+                <h4><strong>Original Text:</strong></h4>
+                <h6 id="original-sentence">Try translating something!</h6>
+              </div>
+              <div id="error-display">
+                <h4>Error:</h4>
+                <code id="error-msg" class="block"></code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <section>
+          <h3>Example Usage:</h3>
+
+          <h5>To Translate Text:</h5>
+          <ul class="usage-list">
+            <li>
+              Submit the 'Translate Text' form above with the desired text and
+              translation selected.
+            </li>
+            <li>
+              Alternatively, send a POST request to
+              <code>/api/translate</code> with a body consisting of url encoded
+              fields of <code>text</code> (text to be translated) and
+              <code>locale</code>('american-to-british' or
+              'british-to-american', the desired translation type).
+            </li>
+          </ul>
+
+          <h3>Example Output:</h3>
+          <p>
+            On submitting a text that requires translation, the response body is
+            JSON with the following form:
+          </p>
+
+          <code class="block">
+            # Submitted fields:
+            <br />
+            {
+            <ul class="indent">
+              <li>"text": "I had a bicky then went to the chippy.",</li>
+              <li>"locale": "british-to-american",</li>
+            </ul>
+            }
+            <br />
+            <br />
+            # Response Body:
+            <br />
+            {
+            <ul class="indent">
+              <li>
+                "translation": "I had a &lt;span
+                class="highlight"&gt;cookie&lt;/span&gt; then went to the
+                &lt;span class="highlight"&gt;fish-and-chip shop&lt;/span&gt;.",
+              </li>
+              <li>
+                "plaintext": "I had a cookie then went to the fish-and-chip
+                shop."
+              </li>
+              <li>"text": "I had a bicky then went to the chippy."</li>
+            </ul>
+            }
+          </code>
+
+          <p>
+            On submitting a text that does not require translation, the response
+            body is JSON with the following form:
+          </p>
+
+          <code class="block">
+            # Submitted fields:
+            <br />
+            {
+            <ul class="indent">
+              <li>"text": "These Mangoes are delicious!",</li>
+              <li>"locale": "american-to-british",</li>
+            </ul>
+            }
+            <br />
+            <br />
+            # Response Body:
+            <br />
+            {
+            <ul class="indent">
+              <li>"translation": "Everything looks good to me!",</li>
+              <li>"plaintext": "These Mangoes are delicious!"</li>
+              <li>"text": "These Mangoes are delicious!"</li>
+            </ul>
+            }
+          </code>
+
+          <p>
+            If the text or locale fields are missing, empty or invalid, a JSON
+            with an 'error' property, with corresponding value being a string
+            explaining the error is returned.
+          </p>
+        </section>
+      </main>
+
+      <hr />
+
+      <footer>
+        <p>
+          A project set by
+          <a href="https://www.freecodecamp.org/">freeCodeCamp</a>
+        </p>
+      </footer>
     </div>
+
+    <!-- Bootstrap Script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- CUSTOM JS -->
+    <script src="../public/index.js"></script>
   </body>
-  <script src="../public/index.js"></script>
 </html>

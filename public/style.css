@@ -1,49 +1,128 @@
-code {
-  background: #d0d0d5;
+/****** Main Styling ******/
+
+* {
+  box-sizing: border-box;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #222;
+  background-color: #fafafa;
+  line-height: 1.4em;
+  min-height: 100vh;
 }
 
-.form-container {
-  max-width: 95%;
+main {
+  padding: 40px 0;
 }
 
+main .logo {
+  max-height: 50px;
+  margin-right: 20px;
+}
+
+hr {
+  margin: 25px;
+}
+
+h3 {
+  margin-top: 30px;
+}
+
+h5 {
+  margin-top: 20px;
+}
+
+a {
+  color: #2574a9;
+}
+
+form {
+  margin: 0 10px 25px 10px;
+  padding: 15px;
+  color: #fff;
+  background-color: #333;
+  width: 350px;
+  height: 100%;
+  border-radius: 5px;
+}
+
+form h3 {
+  margin-top: 0;
+}
+
+input,
+select,
 textarea {
+  display: block;
+  margin-bottom: 10px;
   width: 100%;
 }
 
-#user-stories {
-  font-size: 1.2em;
+.btn-success {
+  width: 100%;
+  background-color: #25ae1b;
+  border: none;
 }
 
-#output-container,
-#solution-container,
-#text-input,
-#locale-select,
-input[type="button"] {
-  font-size: 1.1em;
+code {
+  font-family: monospace;
+  font-size: 1em;
+  padding: 2px;
+  color: black;
+  background-color: #fff;
+  max-width: 100%;
 }
 
-#output-container {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
+code.block {
+  display: block;
+  margin-bottom: 20px;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+code ul.indent {
+  padding-left: 20px;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+.footer {
+  margin-top: 40px;
+}
+
+/****** NavBar Styles ******/
+
+.navbar.navbar-dark {
+  background-color: #333;
+}
+
+.navbar .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar .nav-link:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/****** Translation Result Styles ******/
+#text-input {
+  height: 200px;
 }
 
 #solution-container {
-  font-weight: bold;
+  width: 400px;
+  padding: 10px;
 }
 
-#solution-container {
-  margin-left: 20px;
+#translation-result h6 {
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
-#translated-sentence {
-  margin-top: 10px;
-  font-weight: normal;
+#error-display {
+  display: none;
 }
 
 #error-msg {
@@ -53,29 +132,4 @@ input[type="button"] {
 
 .highlight {
   color: green;
-}
-
-#text-input {
-  padding: 10px;
-}
-
-@media (min-width: 800px) {
-  .container {
-    flex-direction: row;
-  }
-
-  .form-container {
-    align-self: flex-end;
-  }
-
-  #output-container {
-    flex-direction: row;
-    margin-top: 0;
-    margin-left: 20px;
-  }
-
-  #solution-container {
-    width: 75%;
-    margin-top: 0;
-  }
 }
