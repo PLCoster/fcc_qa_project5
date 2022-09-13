@@ -153,9 +153,3 @@ class Translator {
 }
 
 module.exports = Translator;
-
-const translator = new Translator();
-const sentence =
-  "I missed my brekkie today - only had time for a cuppa and a biccie! Can't wait to go the the chippy later. Shall I meet you there at 6.00pm? Yes, the one by the launderette!";
-
-console.log(translator.translate(sentence, 'british-to-american'));
