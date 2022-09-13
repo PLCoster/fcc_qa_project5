@@ -9,9 +9,9 @@ suite('Unit Tests', () => {
     test('Successfully translates "Mangoes are my favorite fruit."', () => {
       const sentence = 'Mangoes are my favorite fruit.';
       const locale = 'american-to-british';
-      const expectedPlaintext = 'Mangoes are my favourite.';
+      const expectedPlaintext = 'Mangoes are my favourite fruit.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -24,7 +24,7 @@ suite('Unit Tests', () => {
       const locale = 'american-to-british';
       const expectedPlaintext = 'I ate yoghurt for breakfast.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -37,7 +37,7 @@ suite('Unit Tests', () => {
       const locale = 'american-to-british';
       const expectedPlaintext = "We had a party at my friend's flat.";
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -50,7 +50,7 @@ suite('Unit Tests', () => {
       const locale = 'american-to-british';
       const expectedPlaintext = 'Can you toss this in the bin for me?';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -63,7 +63,7 @@ suite('Unit Tests', () => {
       const locale = 'american-to-british';
       const expectedPlaintext = 'The car park was full.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -76,7 +76,7 @@ suite('Unit Tests', () => {
       const locale = 'american-to-british';
       const expectedPlaintext = 'Like a high tech Heath Robinson device.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -89,7 +89,7 @@ suite('Unit Tests', () => {
       const locale = 'american-to-british';
       const expectedPlaintext = 'To bunk off means to skip class or work.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -102,7 +102,7 @@ suite('Unit Tests', () => {
       const locale = 'american-to-british';
       const expectedPlaintext = 'No Mr Bond, I expect you to die.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -115,7 +115,7 @@ suite('Unit Tests', () => {
       const locale = 'american-to-british';
       const expectedPlaintext = 'Dr Grosh will see you now.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -128,7 +128,7 @@ suite('Unit Tests', () => {
       const locale = 'american-to-british';
       const expectedPlaintext = 'Lunch is at 12.15 today.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -143,7 +143,7 @@ suite('Unit Tests', () => {
       const locale = 'british-to-american';
       const expectedPlaintext = 'We watched the soccer match for a while.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -156,7 +156,7 @@ suite('Unit Tests', () => {
       const locale = 'british-to-american';
       const expectedPlaintext = 'Tylenol takes up to an hour to work.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -167,9 +167,9 @@ suite('Unit Tests', () => {
     test('Successfully translates "First, caramelise the onions."', () => {
       const sentence = 'First, caramelise the onions.';
       const locale = 'british-to-american';
-      const expectedPlaintext = 'Tylenol takes up to an hour to work.';
+      const expectedPlaintext = 'First, caramelize the onions.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -182,7 +182,7 @@ suite('Unit Tests', () => {
       const locale = 'british-to-american';
       const expectedPlaintext = 'I spent the public holiday at the carnival.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -196,7 +196,7 @@ suite('Unit Tests', () => {
       const expectedPlaintext =
         'I had a cookie then went to the fish-and-chip shop.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -209,7 +209,7 @@ suite('Unit Tests', () => {
       const locale = 'british-to-american';
       const expectedPlaintext = "I've just got odds and ends in my fanny pack.";
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -223,7 +223,7 @@ suite('Unit Tests', () => {
       const expectedPlaintext =
         'The swap meet at Boxted Airfield was called off.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -236,7 +236,7 @@ suite('Unit Tests', () => {
       const locale = 'british-to-american';
       const expectedPlaintext = 'Have you met Mrs. Kalyani?';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -249,7 +249,7 @@ suite('Unit Tests', () => {
       const locale = 'british-to-american';
       const expectedPlaintext = "Prof. Joyner of King's College, London.";
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
@@ -262,7 +262,7 @@ suite('Unit Tests', () => {
       const locale = 'british-to-american';
       const expectedPlaintext = 'Tea time is usually around 4 or 4:30.';
 
-      const { translation, plaintext } = translator.translate('');
+      const { translation, plaintext } = translator.translate(sentence, locale);
       assert.equal(
         plaintext,
         expectedPlaintext,
