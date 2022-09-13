@@ -270,4 +270,143 @@ suite('Unit Tests', () => {
       );
     });
   });
+
+  suite('Translations have translated words highlighted', () => {
+    test('"Favourite" is highlighted when translating "Mangoes are my favorite fruit." to British English', () => {
+      const sentence = 'Mangoes are my favorite fruit.';
+      const locale = 'american-to-british';
+      const expectedTranslation =
+        'Mangoes are my <span class="highlight">favourite</span> fruit.';
+
+      const { translation, plaintext } = translator.translate(sentence, locale);
+      assert.equal(
+        translation,
+        expectedTranslation,
+        'Translated words in the returned translation should be inside a highlight element',
+      );
+    });
+
+    test('"yoghurt" is highlighted when translating "I ate yogurt for breakfast." to British English', () => {
+      const sentence = 'I ate yogurt for breakfast.';
+      const locale = 'american-to-british';
+      const expectedTranslation =
+        'I ate <span class="highlight">yoghurt</span> for breakfast.';
+
+      const { translation, plaintext } = translator.translate(sentence, locale);
+      assert.equal(
+        translation,
+        expectedTranslation,
+        'Translated words in the returned translation should be inside a highlight element',
+      );
+    });
+
+    test('"soccer" is highlighted when translating "We watched the footie match for a while." to American English', () => {
+      const sentence = 'We watched the footie match for a while.';
+      const locale = 'british-to-american';
+      const expectedTranslation =
+        'We watched the <span class="highlight">soccer</span> match for a while.';
+
+      const { translation, plaintext } = translator.translate(sentence, locale);
+      assert.equal(
+        translation,
+        expectedTranslation,
+        'Translated words in the returned translation should be inside a highlight element',
+      );
+    });
+
+    test('"Tylenol" is highlighted when translating "Paracetamol takes up to an hour to work." to American English', () => {
+      const sentence = 'Paracetamol takes up to an hour to work.';
+      const locale = 'british-to-american';
+      const expectedTranslation =
+        '<span class="highlight">Tylenol</span> takes up to an hour to work.';
+
+      const { translation, plaintext } = translator.translate(sentence, locale);
+      assert.equal(
+        translation,
+        expectedTranslation,
+        'Translated words in the returned translation should be inside a highlight element',
+      );
+    });
+  });
+
+  suite(
+    'Translator returns correctly translated plaintext and highlighted translation for larger sentences',
+    () => {
+      test('Translation of large sentence from American to British English', () => {
+        const sentence =
+          'Soccer is my favorite sport to watch. There is a match on at 2:45, if you would like to come? We can pick up some fries on the way.';
+        const locale = 'american-to-british';
+        const expectedResult = {
+          translation:
+            '<span class="highlight">Football</span> is my <span class="highlight">favourite</span> sport to watch. There is a match on at <span class="highlight">2.45</span>, if you would like to come? We can pick up some <span class="highlight">chips</span> on the way.',
+          plaintext:
+            'Football is my favourite sport to watch. There is a match on at 2.45, if you would like to come? We can pick up some chips on the way.',
+        };
+
+        const result = translator.translate(sentence, locale);
+        assert.deepEqual(
+          result,
+          expectedResult,
+          'Returned result should match the expected translation output',
+        );
+      });
+
+      test('Translation of large sentence from British to American English', () => {
+        const sentence =
+          "I missed my brekkie today - only had time for a cuppa and a biccie! Can't wait to go the the chippy later. Shall I meet you there at 6.00pm? Yes, the one by the launderette!";
+        const locale = 'british-to-american';
+        const expectedResult = {
+          translation: `I missed my <span class="highlight">breakfast</span> today - only had time for a <span class="highlight">cup of tea</span> and a <span class="highlight">cookie</span>! Can't wait to go the the <span class="highlight">fish-and-chip shop</span> later. Shall I meet you there at <span class="highlight">6:00pm</span>? Yes, the one by the <span class="highlight">laundromat</span>!`,
+          plaintext:
+            "I missed my breakfast today - only had time for a cup of tea and a cookie! Can't wait to go the the fish-and-chip shop later. Shall I meet you there at 6:00pm? Yes, the one by the laundromat!",
+        };
+
+        const result = translator.translate(sentence, locale);
+        assert.deepEqual(
+          result,
+          expectedResult,
+          'Returned result should match the expected translation output',
+        );
+      });
+    },
+  );
+
+  suite(
+    'If a sentence and locale are given that require no translation, Translator.translate should return "Everything looks good to me!"',
+    () => {
+      test('No translation required for "Mangoes are the best!" from American to British English', () => {
+        const sentence = 'Mangoes are the best!';
+        const locale = 'american-to-british';
+
+        const expectedResult = {
+          plaintext: 'Everything looks good to me!',
+          translation: 'Everything looks good to me!',
+        };
+
+        const result = translator.translate(sentence, locale);
+        assert.deepEqual(
+          result,
+          expectedResult,
+          'Returned result should show that no translation was required',
+        );
+      });
+
+      test('No translation required for "The game starts at 4pm." from  British to American English', () => {
+        const sentence = 'The game starts at 4pm.';
+        const locale = 'british-to-american';
+
+        const expectedResult = {
+          plaintext: 'Everything looks good to me!',
+          translation: 'Everything looks good to me!',
+        };
+
+        const result = translator.translate(sentence, locale);
+        assert.deepEqual(
+          result,
+          expectedResult,
+          'Returned result should show that no translation was required',
+        );
+      });
+    },
+  );
 });

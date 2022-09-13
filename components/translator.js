@@ -64,7 +64,7 @@ const dictionaryRegexForLocale = {
 };
 
 const americanTimeRegex = /\b(2[0-3]|[0-1]?[0-9]):([0-5][0-9])(\b|am|pm)/gi;
-const britishTimeRegex = /\b(2[0-3]|[0-1]?[0-9]).([0-5][0-9])(\b|am|pm)/gi;
+const britishTimeRegex = /\b(2[0-3]|[0-1]?[0-9])\.([0-5][0-9])(\b|am|pm)/gi;
 const timeRegexForLocale = {
   'american-to-british': { regex: americanTimeRegex, translatedSeparator: '.' },
   'british-to-american': { regex: britishTimeRegex, translatedSeparator: ':' },
@@ -105,7 +105,7 @@ class Translator {
 
         plaintextArr.push(translation);
         highlightedTextArr.push(
-          `<span class='highlight'>${translation}</span>`,
+          `<span class="highlight">${translation}</span>`,
         );
       } else {
         plaintextArr.push(token);
@@ -113,9 +113,19 @@ class Translator {
       }
     });
 
-    // Translate any times using method:
-    const translation = this.translateTime(highlightedTextArr.join(''), locale);
-    const plaintext = this.translateTime(plaintextArr.join(''), locale);
+    // Translate any times using translateTime method:
+    const translation = this.translateTime(
+      highlightedTextArr.join(''),
+      locale,
+      true,
+    );
+    const plaintext = this.translateTime(plaintextArr.join(''), locale, false);
+
+    // If no changes have been made, return 'Everything looks good to me!'
+    if (sentenceStr === plaintext) {
+      const returnStr = 'Everything looks good to me!';
+      return { translation: returnStr, plaintext: returnStr };
+    }
 
     return {
       translation,
@@ -123,10 +133,24 @@ class Translator {
     };
   }
 
-  translateTime(sentenceStr, locale) {
+  translateTime(sentenceStr, locale, highlight) {
     const { regex, translatedSeparator } = timeRegexForLocale[locale];
-    return sentenceStr.replace(regex, `$1${translatedSeparator}$2$3`);
+
+    if (highlight) {
+      return sentenceStr.replace(
+        regex,
+        `<span class="highlight">$1${translatedSeparator}$2$3</span>`,
+      );
+    } else {
+      return sentenceStr.replace(regex, `$1${translatedSeparator}$2$3`);
+    }
   }
 }
 
 module.exports = Translator;
+
+const translator = new Translator();
+const sentence =
+  "I missed my brekkie today - only had time for a cuppa and a biccie! Can't wait to go the the chippy later. Shall I meet you there at 6.00pm? Yes, the one by the launderette!";
+
+console.log(translator.translate(sentence, 'british-to-american'));
