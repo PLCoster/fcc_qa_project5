@@ -25,11 +25,13 @@ suite('Functional Tests', () => {
             translation:
               'I ate <span class="highlight">yoghurt</span> for breakfast.',
             plaintext: 'I ate yoghurt for breakfast.',
+            text: 'I ate yogurt for breakfast.',
           },
           {
             translation:
               'I had a <span class="highlight">cookie</span> then went to the <span class="highlight">fish-and-chip shop</span>.',
             plaintext: 'I had a cookie then went to the fish-and-chip shop.',
+            text: 'I had a bicky then went to the chippy.',
           },
         ];
 
@@ -243,6 +245,7 @@ suite('Functional Tests', () => {
           {
             translation: 'Everything looks good to me!',
             plaintext: 'These Mangoes are delicious!',
+            text: 'These Mangoes are delicious!',
           },
         ];
 

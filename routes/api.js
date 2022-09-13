@@ -23,6 +23,6 @@ module.exports = function (app) {
 
     const translations = translator.translate(text, locale);
 
-    return res.json(translations);
+    return res.json({ ...translations, text });
   });
 };
